@@ -1,0 +1,26 @@
+class User(object):
+    def __init__(self, name, balance, checking_account):
+        self.name = name
+        self.balance = balance
+        self.checking_account = checking_account
+    #Happy coding
+    def withdraw(self, withdraw_amount):
+        if self.balance < withdraw_amount:
+            raise ValueError("Balance  is not enough to withdraw this amount")
+        else:
+            self.balance = self.balance - withdraw_amount
+        return f'{self.name} has {self.balance}.'
+    
+    def check(self, check_writer, check_amount):
+        if check_writer.balance < check_amount:
+            raise ValueError("Balance is not enough to complete this operation")
+        elif self.checking_account == False:
+            raise ValueError
+        else:
+            self.balance = self.balance + check_amount
+            check_writer.balance =  check_writer.balance - check_amount
+        return f'{self.name} has {self.balance} and {check_writer.name} has {check_writer.balance}.'
+    
+    def add_cash(self, cash_amount):
+        self.balance = self.balance + cash_amount
+        return f'{self.name} has {self.balance}.'
